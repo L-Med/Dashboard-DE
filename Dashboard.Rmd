@@ -1,0 +1,123 @@
+---
+title: "Deutsch Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+---
+<style>                     
+.navbar {
+  background-color:rgb(255, 140, 0);
+  border-color:white;
+}
+.inner {
+  background-color:rgb(255, 140, 0);
+  border-color:white;
+}
+
+.navbar-brand {
+color:white!important;
+}
+</style>  
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+```
+
+# Entrada
+
+## Columna {data-width=600 .tabset}
+
+### Semanal
+
+```{r, fig.width=8}
+bar_dias
+```
+
+### Mensual
+
+```{r, fig.width=8}
+bar_meses
+```
+
+## Columna {data-width=400}
+
+### Oraciones en Anki
+
+```{r, fig.width = 10, fig.height=5}
+gauge(Anki_2020 + Anki_2021 + Anki_2022,
+      0,
+      3500, 
+      abbreviateDecimals = 2,
+      label = "Oraciones Totales",
+      gaugeSectors(
+  success = c(2700, 3500),
+  warning = c(2000, 2699),
+  danger = c(0, 1999)))
+```
+
+
+### Oraciones agregadas en 2022
+```{r, fig.width = 10, fig.height=5}
+gauge(Anki_2022,
+      0,
+      180,
+      abbreviateDecimals = 2,
+      label = "Oraciones Nuevas",
+      gaugeSectors(
+  success = c(168, 180),
+  warning = c(120, 167),
+  danger = c(0, 119)))
+```
+
+# Vista Anual
+
+## Columna {data-height=850 .tabset}
+
+### 2020
+```{r, fig.width=9, fig.height=4}
+bar_meses_2020
+```
+
+### 2021
+```{r, fig.width=9, fig.height=4}
+bar_meses_2021
+```
+
+### 2022
+```{r, fig.width=9, fig.height=4}
+bar_meses_2022
+```
+
+## Columna {data-height=100}
+
+### Total Horas 2020
+```{r}
+valueBox(Immersion_2020, icon = "fa-clock")
+```
+
+### Total Horas 2021
+```{r}
+valueBox(Immersion_2021, icon = "fa-clock")
+```
+
+### Total Horas 2022
+```{r}
+valueBox(Immersion_2022, icon = "fa-clock")
+```
+
+## Columna {data-height=100}
+
+### Oraciones Nuevas 2020
+```{r}
+valueBox(Anki_2020, icon = "fa-folder")
+```
+
+### Oraciones Nuevas 2021
+```{r}
+valueBox(Anki_2021, icon = "fa-folder")
+```
+
+### Oraciones Nuevas 2022
+```{r}
+valueBox(Anki_2022, icon = "fa-folder")
+```
