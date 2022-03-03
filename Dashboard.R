@@ -2,7 +2,6 @@
 libs <- c('dplyr',
            'ggplot2', 'ggthemes',
            'tidyr', 'readr',
-           'dplyr',
            'lubridate',
            'forcats',
            'rmarkdown', 'flexdashboard')
