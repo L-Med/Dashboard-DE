@@ -5,6 +5,9 @@
 # Session Data files
 .RData
 
+# Project files
+.Rproj
+
 # User-specific files
 .Ruserdata
 
@@ -37,3 +40,6 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+
+# HTMl
+Dashboard.html
