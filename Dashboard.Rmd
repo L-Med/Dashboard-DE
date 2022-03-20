@@ -43,6 +43,12 @@ bar_dias
 bar_meses
 ```
 
+### Distribución
+
+```{r, fig.width=8}
+bar_distribucion
+```
+
 ## Columna {data-width=400}
 
 ### Oraciones en Anki

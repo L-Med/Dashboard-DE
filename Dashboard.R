@@ -107,6 +107,30 @@ bar_dias <- data %>%
   theme(legend.position = "none") +
   labs(x = "", y = "", title = "Tiempo Medio de Contenido Diario (Min)")
 
+# Agrupado Leer/Ver
+bar_distribucion <- data %>%
+  group_by(Year) %>%
+  summarise(Audiovisual = round(sum(Listen)/60, digits = 0),
+            Escrito = round(sum(Read)/60, digits = 0)) %>%
+  pivot_longer(c(Escrito, Audiovisual), names_to='Contenido', values_to="Horas") %>%
+  mutate(Año = Year) %>%
+  ggplot(aes(Año, Horas, fill = Contenido, label = Horas)) +
+  geom_bar(stat = 'identity') +
+  scale_fill_manual(values = c('darkorange2', 'orange')) +
+  # geom_text(vjust = 1.6,
+  #           hjust = 'center',
+  #           size = 4,
+  #           color = 'white') +
+  geom_label(nudge_x = -0.3,
+             nudge_y = 0.4,
+             color = 'white',
+             show.legend = F) +
+  theme_hc() +
+  theme(legend.position = 'top',
+        axis.text.y = element_blank(),
+        axis.ticks.y = element_blank()) +
+  labs(x = "", y = "", title = "Distribución de contenido por Año (Horas)")
+
 # Por meses
 bar_meses <- data %>%
   group_by(Month) %>%
