@@ -10,7 +10,6 @@ Se puede visualizar en https://l-med.github.io/Dashboard-DE/Dashboard
 - ggthemes
 - tidyr
 - readr
-- lubridate
 - forcats
 - rmarkdown
 - shiny
