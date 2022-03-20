@@ -155,7 +155,7 @@ for (i in levels(data$Year)) {
          data %>%
            filter(Year == i) %>%
            group_by(Month) %>%
-           summarise(Time = sum(Listen + Read)) %>%
+           summarise(Time = round(sum(Listen + Read)/60, digits = 0)) %>%
            pivot_longer(c(Time), names_to = "type", values_to = "val") %>%
            ggplot(aes(Month, val, label = val)) +
            geom_col(fill = "darkorange") +
@@ -163,7 +163,7 @@ for (i in levels(data$Year)) {
                      hjust = 'center',
                      size = 3,
                      color = 'white') +
-           lims(y = c(0, 3000)) +
+           lims(y = c(0, 50)) +
            scale_x_discrete(drop = F) +
            theme_hc() +
            theme(legend.position = "none") +
